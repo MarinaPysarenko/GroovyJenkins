@@ -25,6 +25,7 @@ pipeline {
                 sh "mvn test -Dtest=ModalsTabTest#openSmallModal"
             }
         }
+    }
         post('Allure report') {
             always {
                 steps {
@@ -32,6 +33,5 @@ pipeline {
                 }
             }
         }
-    }
 }
 
