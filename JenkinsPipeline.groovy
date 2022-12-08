@@ -25,7 +25,7 @@ pipeline {
                 sh "mvn test -Dtest=ModalsTabTest#openSmallModal"
             }
         }
-        stage('reports') {
+        stage('Allure report') {
             steps {
                 script {
                     allure([
