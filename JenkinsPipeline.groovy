@@ -25,13 +25,19 @@ pipeline {
                 sh "mvn test -Dtest=ModalsTabTest#openSmallModal"
             }
         }
-    }
-        post('Allure report') {
-            always {
-                steps {
-                    allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+        stage('reports') {
+            steps {
+                script {
+                    allure([
+                            includeProperties: false,
+                            jdk              : '',
+                            properties       : [],
+                            reportBuildPolicy: 'ALWAYS',
+                            results          : [[path: 'target/allure-results']]
+                    ])
                 }
             }
         }
+    }
 }
 
